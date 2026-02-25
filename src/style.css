@@ -1,0 +1,637 @@
+/* --- CSS Variables & Reset --- */
+:root {
+  /* Editorial Theme Colors */
+  --bg-color: #f9f8f4; /* Creamy off-white */
+  --text-color: #222222; /* Stark dark grey/black */
+  --accent-color: #222222; /* Using black as accent for now, instead of the green */
+  --border-color: #333333;
+
+  /* Typography */
+  /* Using system monospace font stack for the "editorial" technical feel */
+  --font-mono: 'Courier New', Courier, monospace;
+  /* Using a clean, heavy system sans-serif for headlines */
+  --font-sans: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* --- Optional Navbar --- */
+.editorial-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+}
+
+.nav-brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  margin-left: 2rem;
+  position: relative;
+  transition: opacity 0.3s ease;
+}
+
+.nav-links a:hover {
+  opacity: 0.6;
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--text-color);
+}
+
+
+/* --- Landing Section Layout --- */
+.landing-section {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* The main bordered box */
+.editorial-container {
+  border: 3px solid var(--border-color);
+  padding: 4rem;
+  max-width: 1200px;
+  width: 100%;
+  background-color: #fff; /* Slightly cleaner white inside the box */
+  
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* Columns */
+.content-column {
+  flex: 3; /* Takes up more space */
+}
+
+.image-column {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+/* --- Typography Styling --- */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 4.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+/* The interactive underline effect */
+.highlight-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.highlight-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 5px; /* Adjust position relative to text base */
+  width: 100%;
+  height: 6px; /* Thickness of the underline */
+  background-color: var(--text-color);
+  z-index: -1;
+  transition: height 0.3s ease, bottom 0.3s ease;
+}
+
+/* Interactive hover for the name */
+.highlight-underline:hover::after {
+ height: 20px;
+ bottom: 0px;
+ opacity: 0.2;
+}
+
+
+.mono-description {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  max-width: 600px;
+  margin-bottom: 3rem;
+  border-left: 2px solid var(--border-color);
+  padding-left: 1.5rem;
+}
+
+/* --- Buttons & Icons --- */
+.editorial-btn {
+  background-color: transparent;
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
+  padding: 1rem 2rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.editorial-btn i {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.editorial-btn:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+.editorial-btn:hover i {
+  transform: translateX(5px);
+}
+
+.social-links {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.social-links a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  border: 1px solid transparent;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  border-color: var(--text-color);
+  transform: translateY(-3px);
+}
+
+/* --- Image Styling --- */
+/* We adapt the circular style from image_1 but keep it clean */
+.image-wrapper {
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--border-color);
+  position: relative;
+}
+
+/* Optional: Add a subtle editorial "offset border" effect */
+.image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px dotted var(--border-color);
+    z-index: -1;
+}
+
+.portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Responsive adjustments --- */
+@media (max-width: 968px) {
+  .editorial-container {
+    flex-direction: column-reverse;
+    padding: 2rem;
+    gap: 2rem;
+  }
+  
+  .content-column {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  .mono-description {
+    margin: 0 auto 2rem auto;
+    border-left: none;
+    border-top: 2px solid var(--border-color);
+    padding-top: 1rem;
+    padding-left: 0;
+  }
+
+  .cta-container, .social-links {
+    justify-content: center;
+  }
+
+  .image-wrapper {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+/* --- Preloader Animation --- */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  z-index: 9999;
+  /* Add a solid background to hide the site during animation */
+  background-color: #ffffff; 
+  pointer-events: none; 
+}
+
+.loader-bar {
+  flex: 1;
+  height: 100%;
+  background-color: var(--text-color); /* The "Black" start */
+  /* The gray border at the top of the color change */
+  border-top: 6px solid #888888; 
+  
+  /* The animation: 0.8s duration, smooth easing */
+  animation: dropReveal 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+/* Staggered delays to create the wave effect */
+.loader-bar:nth-child(1) { animation-delay: 0.0s; }
+.loader-bar:nth-child(2) { animation-delay: 0.1s; }
+.loader-bar:nth-child(3) { animation-delay: 0.2s; }
+.loader-bar:nth-child(4) { animation-delay: 0.3s; }
+.loader-bar:nth-child(5) { animation-delay: 0.4s; }
+
+/* The Keyframe Animation */
+@keyframes dropReveal {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    /* Slides the bar entirely down off the screen */
+    transform: translateY(100%); 
+  }
+}
+
+/* Optional: Hide scrollbar while loading to prevent scrolling mid-animation */
+body.loading {
+  overflow: hidden;
+}
+
+/* --- Fade-In Animations for Content --- */
+
+/* 1. Set initial hidden state */
+.editorial-nav,
+.editorial-container {
+  opacity: 0;
+  transform: translateY(20px); /* Pushes them down slightly */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 2. Define the visible state when .site-loaded is applied */
+.site-loaded .editorial-nav {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.1s; /* Starts shortly after white screen drops */
+}
+
+.site-loaded .editorial-container {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.3s; /* Container fades in right after the nav */
+}
+
+/* --- Projects Section Layout --- */
+.projects-section {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-color); /* Match the editorial background */
+  position: relative;
+  border-top: 2px solid var(--border-color); /* Stark separation line */
+}
+
+/* --- Sticky Sidebar --- */
+.about-sidebar {
+  flex: 0 0 350px; 
+  border-right: 2px solid var(--border-color);
+  padding: 2rem;
+  
+  /* Make it sticky and take the full viewport height */
+  position: sticky;
+  top: 0;
+  height: 100vh; 
+  
+  /* Flexbox for vertical centering */
+  display: flex;
+  flex-direction: column;
+  
+  /* Set initial states for the scroll animation */
+  opacity: 0;
+  transform: translateX(-30px);
+  will-change: opacity, transform; /* Performance optimization */
+}
+
+.sidebar-label {
+  font-family: var(--font-mono);
+  font-weight: bold;
+  font-size: 0.9rem;
+  font-style: italic;
+  /* Absolute positioning keeps it at the top left while content centers */
+  position: absolute; 
+  top: 2rem;
+  left: 2rem;
+}
+
+.sidebar-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically centers the block */
+  text-align: left; /* Keeps text left-aligned like the reference */
+}
+
+.sidebar-name {
+  font-size: 2.8rem;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: -1px; /* Tighter letter spacing like the image */
+}
+
+.sidebar-title {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.sidebar-tagline {
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  max-width: 250px;
+}
+
+.sidebar-socials {
+  margin-top: 0;
+  gap: 1rem;
+}
+
+.sidebar-socials a {
+  font-size: 1.4rem;
+  padding: 0;
+  border: none;
+}
+
+/* --- Projects Scrollable Area --- */
+.projects-container {
+  flex: 1;
+  padding: 2rem 0;
+  overflow: hidden; /* Contains the overflowing marquee text */
+}
+
+.projects-label {
+  padding-left: 2rem; /* Align with content */
+}
+
+.project-card {
+  margin-bottom: 6rem;
+}
+
+/* --- Project Marquee Title --- */
+.project-header {
+  border-bottom: 2px solid var(--border-color);
+  border-top: 2px solid var(--border-color);
+  padding: 0.5rem 0;
+  margin-bottom: 2rem;
+  overflow: hidden; /* Hide the scrolling text overflow */
+  display: flex;
+}
+
+.marquee-title {
+  display: flex;
+  white-space: nowrap;
+  font-size: 4rem;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  padding-left: 2rem;
+  /* Animate the transform continuously */
+}
+.solid-text {
+  color: var(--text-color);
+  padding-right: 0.5rem;
+}
+
+/* Ensure the text is perfectly hollow with a black stroke */
+.outline-text {
+  color: var(--bg-color); /* Match background */
+  -webkit-text-stroke: 1.5px var(--text-color); 
+  padding-left: 10px;
+}
+
+/* --- Project Imagery & Tech --- */
+.project-image-wrapper {
+  margin: 0 2rem 2rem 2rem;
+  border: 2px solid var(--border-color);
+  /* Aspect ratio trick to keep images uniform */
+  aspect-ratio: 16 / 9; 
+  overflow: hidden;
+  background-color: #fff; /* In case of transparent images */
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-tech-stack {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0 2rem;
+  justify-content: flex-end; /* Aligns tags to the right like the reference */
+}
+
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.6rem;
+  color: #666;
+}
+
+/* --- Responsive Layout (Stacks on mobile) --- */
+@media (max-width: 968px) {
+  .projects-section {
+    flex-direction: column;
+  }
+  
+  .about-sidebar {
+    flex: none;
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid var(--border-color);
+    position: static; /* Removes sticky on mobile */
+  }
+
+  .sidebar-content {
+    position: static;
+  }
+
+  .marquee-title {
+    font-size: 2rem;
+  }
+}
+
+/* --- Resume Section Layout --- */
+.resume-section {
+  padding: 6rem 5%;
+  background-color: var(--bg-color); /* Maintain editorial off-white */
+  color: var(--text-color);
+}
+
+/* Header with Accent Line */
+.resume-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.resume-main-title {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.header-line {
+  flex: 1;
+  height: 2px;
+  /* Creates the black line that ends in a bright orange/red accent */
+  background: linear-gradient(to right, var(--text-color) 85%, #ff5722 85%);
+}
+
+/* Grid Layout */
+.resume-grid {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.resume-label {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #555;
+}
+
+/* Job Timeline Entries */
+.job-item {
+  /* The distinct thick black line on the left */
+  border-left: 2px solid var(--text-color);
+  padding-left: 2rem;
+  margin-bottom: 4rem;
+  position: relative;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.job-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.job-date {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  background-color: #e5e5e5; /* The gray pill background from the reference */
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  color: #333;
+}
+
+.job-company {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+.job-bullets {
+  list-style-type: none;
+  padding: 0;
+}
+
+.job-bullets li {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 1rem;
+  /* Simulating the dash bullet style */
+  text-indent: -1rem; 
+  padding-left: 1rem;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .resume-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .resume-label {
+    margin-bottom: 2rem;
+  }
+  
+  .job-header {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
