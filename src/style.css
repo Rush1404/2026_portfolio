@@ -147,7 +147,6 @@ h1 {
   font-size: 1rem;
   max-width: 600px;
   margin-bottom: 3rem;
-  border-left: 2px solid var(--border-color);
   padding-left: 1.5rem;
 }
 
@@ -190,7 +189,6 @@ h1 {
   text-decoration: none;
   color: var(--text-color);
   font-size: 1.2rem;
-  border: 1px solid transparent;
   padding: 8px;
   border-radius: 50%;
   transition: all 0.3s ease;
@@ -227,7 +225,7 @@ h1 {
 
 .portrait-img {
   width: 100%;
-  height: 100%;
+  height: 140%;
   object-fit: cover;
 }
 
@@ -634,4 +632,848 @@ body.loading {
     flex-direction: column;
     gap: 0.5rem;
   }
+}
+
+/* --- Personal Hero Section --- */
+
+.faded-title {
+  font-family: var(--font-sans); /* Matches the main H1 font */
+  opacity: 0.3; /* Fades the text */
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.personal-hero {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-color);
+  text-align: center;
+  border-top: 2px solid var(--border-color);
+  padding: 2rem;
+}
+
+.personal-content {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personal-title {
+  font-size: 5rem;
+  line-height: 1.1;
+  margin-bottom: 3rem;
+  text-transform: none; 
+  white-space: nowrap; /* Prevents "Rush" from wrapping to the next line prematurely */
+}
+
+/* --- Nickname Hover & Vibration --- */
+.nickname-container {
+  position: relative;
+  display: inline-block;
+  cursor: crosshair; /* Adds to the editorial/interactive feel */
+}
+
+.nickname-text {
+  display: inline-block;
+  font-style: italic;
+  /* Keep the background stroke effect from your projects section */
+  color: var(--bg-color); 
+  -webkit-text-stroke: 2px var(--text-color);
+  /* Smooth scale transition */
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-origin: center;
+}
+
+/* The hover trigger */
+.nickname-container:hover .nickname-text {
+  transform: scale(0.5);
+  /* Triggers the rapid shaking */
+  animation: vibrate-shake 0.1s linear infinite;
+  color: var(--text-color); /* Fills in the text on hover */
+}
+
+@keyframes vibrate-shake {
+  0% { margin-left: -2px; margin-top: -2px; }
+  25% { margin-left: 2px; margin-top: -2px; }
+  50% { margin-left: -2px; margin-top: 2px; }
+  75% { margin-left: 2px; margin-top: 2px; }
+  100% { margin-left: -2px; margin-top: -2px; }
+}
+
+/* --- Flying Stars --- */
+.star-field {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.flying-star {
+  position: absolute;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  /* Start off-screen to the left */
+  transform: translateX(-50px);
+  animation: flyRight linear forwards;
+}
+
+@keyframes flyRight {
+  to {
+    transform: translateX(300px); /* Move past the container */
+  }
+}
+
+/* --- Subtitle & Qualities --- */
+.text-center {
+  text-align: center;
+  margin: 0 auto 3rem auto;
+  /* Removed border-top and border-bottom */
+  padding: 1rem 0;
+}
+
+.subtitle-large {
+  font-size: 2.3rem; /* Makes "Rush is..." bigger */
+  line-height: 1.5;
+}
+
+.quality-text {
+  font-size: 1.8rem; /* Perfectly matches the surrounding subtitle text */
+  font-weight: 900;
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  display: inline-block;
+  min-width: 220px; /* Increased slightly to accommodate bigger font */
+  transition: opacity 0.5s ease;
+  vertical-align: baseline; /* Keeps it perfectly aligned with the mono text */
+}
+
+.quality-text.fade-out {
+  opacity: 0;
+}
+.quality-text.fade-in {
+  opacity: 1;
+}
+
+/* --- Button Hover Animation --- */
+.center-cta {
+  justify-content: center;
+}
+
+.letter-btn {
+  position: relative;
+  overflow: hidden;
+  width: 220px; /* Fixed width prevents resizing during animation */
+  justify-content: center;
+}
+
+.btn-text-wrapper {
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+  width: 100%;
+  text-align: center;
+}
+
+.btn-icon-hidden {
+  position: absolute;
+  font-size: 1.2rem;
+  /* Start off-screen to the left */
+  transform: translateX(-150px);
+  transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.letter-btn:hover .btn-text-wrapper {
+  /* Swipe text to the right */
+  transform: translateX(200px);
+}
+
+.letter-btn:hover .btn-icon-hidden {
+  /* Bring icon into the center */
+  transform: translateX(0);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .personal-title { font-size: 3rem; }
+}
+
+/* --- Staggered Fade-In Utility --- */
+.animate-item {
+  opacity: 0; /* Start completely invisible */
+  /* Move it down slightly so it slides up into place */
+  transform: translateY(20px); 
+  /* Run the animation, filling forwards so it stays visible at the end */
+  animation: fadeUpItem 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  /* Read the delay from the HTML inline style, defaulting to 0s if missing */
+  animation-delay: var(--delay, 0s); 
+}
+
+@keyframes fadeUpItem {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Modal Overlay & Container (Light Editorial Theme) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  /* Lighter overlay background */
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 10000;
+  opacity: 0; 
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1; 
+  pointer-events: auto;
+}
+
+.modal-container {
+  background-color: var(--bg-color); /* Matches your creamy off-white */
+  color: var(--text-color);
+  padding: 2.5rem;
+  /* Stark editorial borders instead of rounded soft edges */
+  border: 3px solid var(--border-color); 
+  width: 90%; 
+  max-width: 550px;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Sharp, brutalist drop shadow */
+  box-shadow: 15px 15px 0px rgba(0,0,0,0.1); 
+}
+
+.modal-overlay.active .modal-container { 
+  transform: translateY(0); 
+}
+
+.close-modal {
+  position: absolute; top: 15px; right: 15px;
+  background: none; border: none; 
+  color: var(--text-color); font-size: 1.5rem;
+  cursor: pointer; transition: transform 0.2s;
+}
+
+.close-modal:hover { transform: scale(1.1); }
+
+.modal-title {
+  font-family: var(--font-mono); font-size: 1.3rem; 
+  text-align: center; margin-bottom: 2rem; font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* --- Tilted Image Gallery --- */
+.modal-images {
+  display: flex; justify-content: center; align-items: center;
+  height: 120px; margin-bottom: 1.5rem;
+}
+
+.modal-img {
+  width: 90px; height: 90px; object-fit: cover;
+  border: 2px solid var(--border-color);
+  margin: 0 -10px; 
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+  cursor: pointer;
+  /* Grayscale filter to match your project images */
+  filter: grayscale(100%); 
+}
+
+/* Base rotations forming the fan shape */
+.img-1 { transform: rotate(-10deg) translateY(10px); z-index: 1; }
+.img-2 { transform: rotate(-5deg) translateY(0px); z-index: 2; }
+.img-3 { transform: rotate(0deg) translateY(-5px); z-index: 3; width: 100px; height: 100px; }
+.img-4 { transform: rotate(5deg) translateY(0px); z-index: 2; }
+.img-5 { transform: rotate(10deg) translateY(10px); z-index: 1; }
+
+/* The Hover Tilt Effect */
+.modal-img:hover {
+  transform: rotate(0deg) scale(1.2) translateY(-15px);
+  z-index: 10;
+  box-shadow: 10px 10px 0px rgba(0,0,0,0.15);
+  filter: grayscale(0%); /* Reveals color on hover */
+}
+
+/* --- Privacy Note --- */
+.privacy-note {
+  text-align: center; font-family: var(--font-mono); font-size: 0.8rem;
+  color: #555; margin-bottom: 1.5rem;
+}
+
+/* --- Spotlight Text Box Hover (Inverted for Light Theme) --- */
+.glow-wrapper {
+  position: relative;
+  padding: 2px; /* Thickness of the tracking border */
+  background: #e0e0e0; /* Default light gray border */
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+/* The dark spotlight gradient */
+.glow-wrapper::before {
+  content: ""; 
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  /* Dark shadow that tracks the mouse */
+  background: radial-gradient(circle 80px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 0, 0, 0.6), transparent 100%);
+  opacity: 0; 
+  transition: opacity 0.3s; 
+  z-index: 0;
+}
+
+.glow-wrapper:hover::before { opacity: 1; }
+
+.letter-textarea {
+  display: block; width: 100%; height: 100px;
+  background-color: #fff; /* Pure white inside to contrast the off-white modal */
+  color: var(--text-color);
+  border: none; 
+  padding: 1rem; font-family: var(--font-mono); font-size: 0.9rem;
+  resize: none; outline: none;
+  position: relative; z-index: 1; 
+}
+
+.letter-textarea::placeholder { color: #888; }
+
+/* --- Action Buttons --- */
+.modal-actions { display: flex; justify-content: center; gap: 15px; }
+
+.modal-btn {
+  padding: 0.8rem 2.5rem; font-family: var(--font-mono); font-weight: bold; font-size: 0.9rem;
+  border: 2px solid var(--text-color); cursor: pointer; transition: all 0.2s;
+  text-transform: uppercase;
+}
+
+.cancel-btn { 
+  background-color: transparent; 
+  color: var(--text-color); 
+}
+.cancel-btn:hover { 
+  background-color: #eee; 
+}
+
+.send-btn { 
+  background-color: var(--text-color); 
+  color: var(--bg-color); 
+}
+.send-btn:hover { 
+  /* Inverts colors on hover */
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+/* --- Hobbies Section Layout --- */
+.hobbies-section {
+  padding: 6rem 5%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-top: 2px solid var(--border-color);
+}
+
+.hobbies-header {
+  margin-bottom: 5rem;
+}
+
+/* 4-column brutalist grid */
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* --- Base Hobby Card Styling --- */
+.hobby-card {
+  background: #fff;
+  border: 3px solid var(--border-color);
+  min-height: 350px;
+  position: relative;
+  overflow: hidden; /* Important to clip animations */
+  transition: box-shadow 0.3s ease;
+  cursor: help; /* Adds to the interactive technical feel */
+}
+
+/* Sharp brutalist shadow on hover */
+.hobby-card:hover {
+  box-shadow: 10px 10px 0px rgba(0,0,0,1);
+}
+
+.card-inner {
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Pushes title to bottom */
+  position: relative;
+  z-index: 2; /* Keeps text above background animations */
+}
+
+.icon-corner {
+  position: absolute; top: 2rem; right: 2rem;
+  font-size: 1.5rem; color: #ccc;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.hobby-card:hover .icon-corner { color: var(--text-color); transform: scale(1.1); }
+
+.hobby-title {
+  font-size: 2rem; font-weight: 800; line-height: 1.1;
+  text-transform: uppercase; margin-bottom: 0.5rem;
+}
+
+.card-detail {
+  color: #666; font-size: 0.8rem; font-weight: bold;
+}
+
+/* --- Interactive Hover Effects for specific cards --- */
+
+/* 1. Climbing: Invert colors in the background */
+.climbing-card::before {
+  content: ""; position: absolute; bottom: 0; left: 0; width: 100%; height: 0%;
+  background-color: var(--text-color); z-index: 1;
+  transition: height 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.climbing-card:hover::before { height: 100%; }
+
+.climbing-card:hover .hobby-title,
+.climbing-card:hover .card-detail,
+.climbing-card:hover .icon-corner { color: #fff; }
+
+/* 3. Fashion: Simple Color Flip */
+.fashion-card:hover {
+  background-color: var(--text-color); color: #fff;
+}
+.fashion-card:hover .card-detail { color: #aaa; }
+
+
+/* --- 2. Reading Gallery (Adapted from modal) --- */
+.reading-card .card-inner { justify-content: center; } /* Centers the title & gallery */
+
+.book-gallery {
+  display: flex; justify-content: center; align-items: center;
+  height: 150px; margin: 1rem 0; position: relative;
+}
+
+.book-cover {
+  width: 90px; height: 130px; object-fit: cover;
+  border: 2px solid var(--border-color);
+  margin: 0 -15px; /* Overlap */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+  filter: grayscale(100%);
+}
+
+/* Fan shape base positions */
+.book-1 { transform: rotate(-8deg) translateY(10px); z-index: 1; }
+.book-2 { transform: rotate(0deg) translateY(0px); z-index: 2; width: 100px; height: 140px; }
+.book-3 { transform: rotate(8deg) translateY(10px); z-index: 1; }
+
+/* Hover highlight/raise */
+.book-cover:hover {
+  transform: rotate(0deg) scale(1.2) translateY(-20px);
+  z-index: 10;
+  box-shadow: 10px 10px 0px rgba(0,0,0,0.15);
+  filter: grayscale(0%);
+}
+
+/* --- 4. Basketball Cursor Follow --- */
+.wemby-popup {
+  position: absolute; top: 0; left: 0;
+  width: 180px; height: 180px; /* Square container */
+  border-radius: 50%; /* Make it circular like a spotlight */
+  overflow: hidden; border: 3px solid var(--border-color);
+  box-shadow: 10px 10px 0px rgba(0,0,0,0.5);
+  opacity: 0; scale: 0;
+  /* Performance optimization for moving elements */
+  will-change: transform, opacity; 
+  /* Pass through mouse events so they aren't trapped by the popup */
+  pointer-events: none; 
+  z-index: 10;
+  transition: opacity 0.3s ease, scale 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bball-card:hover .wemby-popup {
+  opacity: 1; scale: 1;
+}
+
+.wemby-popup img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+/* Mobile grid adjustment */
+@media (max-width: 600px) {
+  .hobbies-grid { grid-template-columns: 1fr; }
+  .book-gallery { scale: 0.8; } /* Shrink gallery to fit mobile */
+}
+
+/* --- Bento Dashboard Section --- */
+.dashboard-section {
+  padding: 6rem 5%;
+  background-color: var(--bg-color);
+  border-top: 2px solid var(--border-color);
+}
+
+.bento-grid {
+  display: grid;
+  /* 3 columns on large screens */
+  grid-template-columns: repeat(3, 1fr); 
+  /* The stats card spans the bottom */
+  grid-template-areas: 
+    "routine music plans"
+    "stats stats stats";
+  gap: 2rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Base Bento Card */
+.bento-card {
+  background: #fff;
+  border: 3px solid var(--border-color);
+  padding: 2rem;
+  box-shadow: 8px 8px 0px rgba(0,0,0,1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0px rgba(0,0,0,1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+
+.bento-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* --- Specific Widgets --- */
+
+/* 1. Routine */
+.routine-card { grid-area: routine; }
+.routine-list { list-style: none; padding: 0; }
+.routine-list li {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+.routine-list .time {
+  background: var(--text-color);
+  color: var(--bg-color);
+  padding: 0.2rem 0.5rem;
+  font-weight: bold;
+}
+
+/* 2. Music Player */
+.music-card { 
+  grid-area: music; 
+  background-color: var(--text-color); /* Invert colors for music card */
+  color: #fff;
+}
+.music-card .card-header { border-color: #444; }
+
+.player-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.album-art-wrapper {
+  width: 140px; height: 140px;
+  border-radius: 50%; /* Make it look like a vinyl record */
+  border: 4px solid #333;
+  overflow: hidden;
+  position: relative;
+  animation: spin 8s linear infinite;
+  animation-play-state: paused; /* Starts paused */
+}
+.album-art-wrapper.playing { animation-play-state: running; }
+
+.album-art { width: 100%; height: 100%; object-fit: cover; }
+
+.vinyl-hole {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25px; height: 25px;
+  background-color: var(--text-color);
+  border-radius: 50%;
+  border: 2px solid #555;
+}
+
+.track-info { width: 100%; text-align: center; overflow: hidden; }
+
+/* Marquee for long song titles */
+.marquee-container {
+  width: 100%; overflow: hidden; white-space: nowrap; margin-bottom: 0.5rem;
+}
+.marquee-text {
+  display: inline-block;
+  font-family: var(--font-sans); font-weight: 800; font-size: 1.2rem;
+  animation: scrollMarquee 10s linear infinite;
+}
+
+.player-controls { display: flex; gap: 1.5rem; align-items: center; }
+.ctrl-btn {
+  background: none; border: none; color: #fff; font-size: 1.5rem;
+  cursor: pointer; transition: transform 0.2s;
+}
+.ctrl-btn:hover { transform: scale(1.2); }
+.play-pause-btn { font-size: 2.5rem; }
+
+/* Fake EQ Bars */
+.playing-bars { display: flex; gap: 3px; height: 15px; align-items: flex-end; opacity: 0; }
+.playing-bars.active { opacity: 1; }
+.playing-bars span {
+  width: 4px; background-color: #fff;
+  animation: bounce 1s ease-in-out infinite;
+}
+.playing-bars span:nth-child(2) { animation-delay: 0.2s; }
+.playing-bars span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes bounce { 0%, 100% { height: 5px; } 50% { height: 15px; } }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+/* 3. Future Plans */
+.plans-card { grid-area: plans; }
+.checklist { list-style: none; padding: 0; }
+.checklist li {
+  margin-bottom: 1rem; font-size: 0.9rem;
+  cursor: pointer; transition: color 0.2s;
+  display: flex; gap: 10px; align-items: center;
+}
+.checklist li:hover { color: #888; }
+.checklist li.completed {
+  text-decoration: line-through; color: #ccc;
+}
+.checklist li.completed i { font-weight: 900; /* Fills the circle icon */ }
+
+/* 4. Stats Row */
+.stats-card {
+  grid-area: stats;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  padding: 0; /* Remove base padding to style individual cells */
+}
+.stat-row {
+  padding: 2rem;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-right: 3px solid var(--border-color);
+}
+.stat-row:last-child { border-right: none; }
+.stat-label { margin-bottom: 1rem; color: #666; font-size: 0.9rem; }
+.stat-value { font-size: 3.5rem; font-weight: 900; line-height: 1; }
+.outline-text-small {
+  color: transparent; -webkit-text-stroke: 1.5px var(--text-color);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "routine" "music" "plans" "stats";
+  }
+  .stats-card { grid-template-columns: 1fr; }
+  .stat-row { border-right: none; border-bottom: 3px solid var(--border-color); }
+  .stat-row:last-child { border-bottom: none; }
+}
+
+.visually-hidden {
+  position: absolute;
+  /* Throw it 10,000 pixels off the left side of the screen */
+  top: -9999px;
+  left: -9999px;
+  /* Give it a realistic size so YouTube thinks it is visible */
+  width: 300px !important;
+  height: 300px !important;
+  border: 0;
+  /* DO NOT use display: none, opacity: 0, or clip, as YT detects those */
+}
+
+/* --- Contact Section --- */
+.contact-section {
+  padding: 4rem 5%;
+  min-height: calc(100vh - 80px); /* Fill screen minus nav height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-section .resume-header {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 3rem;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+/* --- Editorial Form Styling --- */
+.editorial-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.editorial-form input,
+.editorial-form textarea {
+  width: 100%;
+  background-color: transparent;
+  border: 2px solid var(--border-color);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  border-radius: 0; /* Keep edges sharp */
+}
+
+.editorial-form textarea {
+  height: 180px;
+  resize: vertical;
+}
+
+.editorial-form input::placeholder,
+.editorial-form textarea::placeholder {
+  color: #888;
+}
+
+/* Brutalist Focus State */
+.editorial-form input:focus,
+.editorial-form textarea:focus {
+  outline: none;
+  background-color: #fff;
+  /* Pops the input box up with a harsh shadow */
+  box-shadow: 6px 6px 0px rgba(0,0,0,1);
+  transform: translate(-2px, -2px);
+}
+
+.submit-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 1.2rem;
+  background-color: var(--text-color);
+  color: var(--bg-color);
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  background-color: transparent;
+  color: var(--text-color);
+}
+
+/* --- Copyable Email Box --- */
+.direct-email-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid var(--border-color);
+  padding: 1.2rem 1.5rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #fff;
+}
+
+.direct-email-box:hover {
+  box-shadow: 6px 6px 0px rgba(0,0,0,1);
+  transform: translate(-2px, -2px);
+}
+
+.email-text {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.copy-icon {
+  font-size: 1.2rem;
+  color: #666;
+  transition: color 0.3s;
+}
+
+.direct-email-box:hover .copy-icon {
+  color: var(--text-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row { grid-template-columns: 1fr; gap: 2rem; }
+  .direct-email-box { flex-direction: column; gap: 1rem; align-items: flex-start; }
+  .copy-icon { align-self: flex-end; }
+}
+
+/* --- CV Modal Specifics --- */
+.cv-modal-container {
+  /* Overrides the 550px max-width from the standard modal */
+  max-width: 900px !important; 
+  /* Makes it take up most of the vertical screen space */
+  height: 85vh; 
+  display: flex;
+  flex-direction: column;
+}
+
+.pdf-wrapper {
+  flex: 1; /* Forces the wrapper to take up all remaining space */
+  width: 100%;
+  border: 2px solid var(--border-color);
+  margin-bottom: 2rem;
+  background-color: #f5f5f5; /* Subtle gray background while PDF loads */
+  overflow: hidden;
+}
+
+/* Ensure the iframe fills the wrapper perfectly */
+.pdf-wrapper iframe {
+  display: block;
 }

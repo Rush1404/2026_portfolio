@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <div class="loader" id="loader">
+    <div class="loader-bar"></div>
+    <div class="loader-bar"></div>
+    <div class="loader-bar"></div>
+    <div class="loader-bar"></div>
+    <div class="loader-bar"></div>
+  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rushabh Shah - Personal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/style.css">
+  </head>
+  <body class="site-loaded"> 
+    <nav class="editorial-nav animate-item" style="--delay: 1.2s">
+      <div class="nav-brand">Rushabh .</div>
+      <div class="nav-links">
+        <a href="/">Professional</a>
+        <a href="/personal.html" class="active">Personal</a>
+        <a href="/contact.html">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+    <section id="personal" class="personal-hero">
+        <div class="personal-content">
+          
+          <h1 class="personal-title animate-item" style="--delay: 1.4s">
+            Hi again :)<br>
+            My nickname is <span class="nickname-container">
+              <span class="nickname-text">Rush</span>
+              <span id="star-field" class="star-field"></span>
+            </span>
+          </h1>
+
+          <div class="personal-subtitle animate-item" style="--delay: 1.6s">
+            <p class="mono-description text-center subtitle-large">
+              Rush is <span id="quality-swap" class="quality-text fade-in">creative</span>.<br>
+              Built this site with ❤️
+            </p>
+          </div>
+
+          <div class="cta-container center-cta animate-item" style="--delay: 1.8s">
+            <button class="editorial-btn letter-btn">
+              <span class="btn-text-wrapper">Write a Letter</span>
+              <i class="fa-solid fa-envelope btn-icon-hidden"></i>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="hobbies" class="hobbies-section">
+        
+        <div class="resume-header hobbies-header">
+          <h2 class="resume-main-title">Interests & Hobbies</h2>
+          <div class="header-line"></div>
+        </div>
+
+        <div class="hobbies-grid">
+          
+          <div class="hobby-card climbing-card">
+            <div class="card-inner">
+              <i class="fa-solid fa-mountain icon-corner"></i>
+              <h3 class="hobby-title">Rock<br>Climbing</h3>
+              <p class="mono-label card-detail">// Bouldering & Top Rope</p>
+            </div>
+          </div>
+
+          <div class="hobby-card reading-card">
+            <div class="card-inner">
+              <h3 class="hobby-title">Reading<br>Good Books</h3>
+              <div class="book-gallery">
+                <img src="https://m.media-amazon.com/images/I/91y6ZE8Do3L._AC_UF1000,1000_QL80_.jpg" class="book-cover book-1" alt="The Tainted Cup">
+                <img src="https://upload.wikimedia.org/wikipedia/en/0/00/WoT01_TheEyeOfTheWorld.jpg" class="book-cover book-2" alt="The Eye of the World">
+                <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1720134686i/30156386.jpg" class="book-cover book-3" alt="The Da Vinci Code">
+              </div>
+              <p class="mono-label card-detail">// Fantasy, Sci-Fi, Mystery</p>
+            </div>
+          </div>
+
+          <div class="hobby-card fashion-card">
+            <div class="card-inner">
+              <i class="fa-solid fa-shirt icon-corner"></i>
+              <h3 class="hobby-title">Thrifting &<br>Fashion</h3>
+              <p class="mono-label card-detail">// Sustainable & Unique</p>
+            </div>
+          </div>
+
+          <div class="hobby-card bball-card" id="bball-card">
+            <div class="card-inner">
+              <i class="fa-solid fa-basketball icon-corner"></i>
+              <h3 class="hobby-title">Basketball</h3>
+              <p class="mono-label card-detail">// Playing & Watching (Spurs!)</p>
+            </div>
+            <div class="wemby-popup" id="wemby-popup">
+              <img src="https://images.wsj.net/im-880822?width=1280&size=1.33333333" alt="Victor Wembanyama">
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="dashboard" class="dashboard-section animate-item" style="--delay: 0.2s">
+        
+        <div class="resume-header">
+          <h2 class="resume-main-title">DASHBOARD</h2>
+          <div class="header-line"></div>
+        </div>
+
+        <div class="bento-grid">
+          
+          <div class="bento-card routine-card">
+            <div class="card-header">
+              <h3 class="bento-title">Daily Routine</h3>
+              <i class="fa-regular fa-clock"></i>
+            </div>
+            <ul class="routine-list mono-label">
+              <li><span class="time">07:00 AM</span> Wake & Doomscroll</li>
+              <li><span class="time">09:00 AM</span> Study/Work</li>
+              <li><span class="time">05:00 PM</span> Rock Climb</li>
+              <li><span class="time">08:00 PM</span> Watch Basketball / Read</li>
+              <li><span class="time">11:00 PM</span> Night Routine</li>
+              <li><span class="time">12:00 AM</span> Sleep</li>
+            </ul>
+          </div>
+
+          <div class="bento-card music-card">
+            <div class="card-header">
+              <h3 class="bento-title">On Rotation</h3>
+              <div class="playing-bars" id="eq-bars">
+                <span></span><span></span><span></span>
+              </div>
+            </div>
+            
+            <div class="player-content">
+              <div class="album-art-wrapper">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Petal_Rock_Black.jpg/250px-Petal_Rock_Black.jpg" alt="Album Cover" class="album-art" id="album-art">
+                <div class="vinyl-hole"></div>
+              </div>
+              
+              <div class="track-info">
+                <div class="marquee-container">
+                  <p class="track-title marquee-text">ear to the cocoon - willow </p>
+                </div>
+                <p class="track-artist mono-label">petal rock black</p>
+              </div>
+              
+              <div class="player-controls">
+                <button class="ctrl-btn"><i class="fa-solid fa-backward-step"></i></button>
+                <button class="ctrl-btn play-pause-btn" id="play-btn"><i class="fa-solid fa-play"></i></button>
+                <button class="ctrl-btn"><i class="fa-solid fa-forward-step"></i></button>
+              </div>
+              
+              <audio id="audio-player" src="/willow.mp3" preload="metadata"></audio>
+            </div>
+          </div>
+
+          <div class="bento-card plans-card">
+            <div class="card-header">
+              <h3 class="bento-title">Future Plans</h3>
+              <i class="fa-solid fa-list-check"></i>
+            </div>
+            <ul class="checklist mono-label" id="interactive-checklist">
+              <li><i class="fa-regular fa-circle"></i> Graduate University</li>
+              <li><i class="fa-regular fa-circle"></i> Travel/Backpacking</li>
+              <li><i class="fa-regular fa-circle"></i> Climb my first v7</li>
+              <li><i class="fa-regular fa-circle"></i> Work on my first project car</li>
+              <li><i class="fa-regular fa-circle"></i> Complete the LOTR series</li>
+            </ul>
+          </div>
+
+          <div class="bento-card stats-card">
+            <div class="stat-row">
+              <span class="stat-label mono-label">Books Read This Year</span>
+              <span class="stat-value">3</span>
+            </div>
+            <div class="stat-row outline-stat">
+              <span class="stat-label mono-label">Commits</span>
+              <span class="stat-value outline-text-small">1.2k</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-label mono-label">Cups of Coffee</span>
+              <span class="stat-value">∞</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <div id="letter-modal" class="modal-overlay">
+      <div class="modal-container">
+        <button class="close-modal" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+        
+        <h2 class="modal-title">Write a letter to Rush! <i class="fa-regular fa-envelope"></i></h2>
+
+        <div class="modal-images">
+          <img src="https://images.unsplash.com/photo-1731432245325-d820144afe4a" class="modal-img img-1" alt="Memory 1">
+          <img src="https://images.unsplash.com/photo-1731596691311-5955c052b66e" class="modal-img img-2" alt="Memory 2">
+          <img src="https://images.unsplash.com/photo-1772730669761-2369bb003e15" class="modal-img img-3" alt="Memory 3">
+          <img src="https://images.unsplash.com/photo-1772551765966-16a5f718eb5c" class="modal-img img-4" alt="Memory 4">
+          <img src="https://plus.unsplash.com/premium_photo-1770738995215-a8582e5b1d97" class="modal-img img-5" alt="Memory 5">
+        </div>
+
+        <p class="privacy-note"><i class="fa-regular fa-comment"></i> Only Rush can see this</p>
+
+        <div class="glow-wrapper" id="glow-wrapper">
+          <textarea class="letter-textarea" placeholder="Say hi, ask stuff, or overshare 👀"></textarea>
+        </div>
+
+        <div class="modal-actions">
+          <button class="modal-btn cancel-btn">Cancel</button>
+          <button class="modal-btn send-btn">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

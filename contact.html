@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rushabh Shah - Contact</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/src/style.css">
+  </head>
+  <body class="site-loaded">
+    
+    <nav class="editorial-nav animate-item" style="--delay: 0s">
+      <div class="nav-brand">Rushabh .</div>
+      <div class="nav-links">
+        <a href="/">Professional</a>
+        <a href="/personal.html">Personal</a>
+        <a href="/contact.html" class="active">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="contact" class="contact-section animate-item" style="--delay: 0.2s">
+        
+        <div class="resume-header">
+          <h1 class="resume-main-title">GET IN TOUCH</h1>
+          <div class="header-line"></div>
+        </div>
+
+        <div class="contact-container">
+          
+          <form class="editorial-form" id="contact-form" onsubmit="event.preventDefault();">
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name" class="mono-label">Name</label>
+                <input type="text" id="name" placeholder="Your secret identity" required>
+              </div>
+              <div class="form-group">
+                <label for="email" class="mono-label">Email Address</label>
+                <input type="email" id="email" placeholder="I promise I won't spam you" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message" class="mono-label">Content</label>
+              <textarea id="message" placeholder="Your message goes here. Ask me anything 👀" required></textarea>
+            </div>
+
+            <button type="submit" class="editorial-btn submit-btn">
+              Send Email <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            
+          </form>
+
+          <div class="direct-email-box" id="copy-email-btn">
+            <span class="email-text"><i class="fa-regular fa-envelope"></i> Email: rushabh1404@gmail.com</span>
+            <span class="copy-icon" id="copy-icon"><i class="fa-regular fa-copy"></i></span>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

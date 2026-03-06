@@ -20,9 +20,9 @@
     <nav class="editorial-nav">
       <div class="nav-brand">Rush .</div>
       <div class="nav-links">
-        <a href="#professional" class="active">Professional</a>
-        <a href="#personal">Personal</a>
-        <a href="#contact">Contact</a>
+        <a href="/" class="active">Professional</a>
+        <a href="/personal.html">Personal</a>
+        <a href="/contact.html">Contact</a>
       </div>
     </nav>
 
@@ -42,21 +42,19 @@
           </p>
 
           <div class="cta-container">
-            <button class="editorial-btn">VIEW CV <i class="fa-solid fa-chevron-right"></i></button>
+            <button class="editorial-btn" id="view-cv-btn">VIEW CV <i class="fa-solid fa-chevron-right"></i></button>
           </div>
           
           <div class="social-links">
-            <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" aria-label="Youtube"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/rush.hh/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/rushshdev/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/Rush1404" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
 
         <div class="image-column">
           <div class="image-wrapper">
-            <img src="./public/nova_swing.jpg" alt="Nova on Swing" class="portrait-img">
+            <img src="./pfp.jpg" alt="Me!" class="portrait-img">
           </div>
         </div>
 
@@ -74,9 +72,9 @@
           <p class="sidebar-tagline">I love tinkering and making cool things.</p>
           
           <div class="social-links sidebar-socials">
-            <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-            <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.instagram.com/rush.hh/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/rushshdev/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/Rush1404" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
           </div>
         </div>
       </aside>
@@ -93,7 +91,7 @@
           </div>
           
           <div class="project-image-wrapper editorial-border">
-            <img src="/public/mantr_port.png" alt="mantra portfolio" class="project-image">
+            <img src="/mantr_port.png" alt="mantra portfolio" class="project-image">
           </div>
           
           <div class="project-tech-stack">
@@ -111,7 +109,7 @@
             </h3>
           </div>
           <div class="project-image-wrapper editorial-border">
-            <img src="/public/daniel_papa.png" alt="daniel papa portfolio" class="project-image">
+            <img src="/daniel_papa.png" alt="daniel papa portfolio" class="project-image">
           </div>
           <div class="project-tech-stack">
             <span class="tech-tag">Vanilla JS</span>
@@ -193,6 +191,28 @@
         </div>
       </div>
     </section>
+
+    <div id="cv-modal" class="modal-overlay">
+      <div class="modal-container cv-modal-container">
+        
+        <button class="close-modal close-cv" aria-label="Close modal"><i class="fa-solid fa-xmark"></i></button>
+        
+        <h2 class="modal-title">Rushabh_Resume.pdf</h2>
+
+        <div class="pdf-wrapper">
+          <iframe src="/resume.pdf" title="Rushabh Shah Resume" width="100%" height="100%" style="border: none;">
+            <p>Your browser does not support PDFs. <a href="/resume.pdf">Download the PDF</a>.</p>
+          </iframe>
+        </div>
+
+        <div class="modal-actions" style="justify-content: center;">
+          <a href="/resume.pdf" download="Rushabh_Shah_Resume.pdf" class="editorial-btn" style="text-decoration: none;">
+            Download PDF <i class="fa-solid fa-download" style="margin-left: 8px;"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
 
     <script type="module" src="/src/main.ts"></script>
   </body>
