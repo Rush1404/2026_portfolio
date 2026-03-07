@@ -1477,3 +1477,111 @@ body.loading {
 .pdf-wrapper iframe {
   display: block;
 }
+
+/* ============================================================
+   SEND CONFIRMATION OVERLAY
+   Append this to the bottom of style.css
+   ============================================================ */
+
+.send-confirmation {
+  position: absolute;
+  inset: 0;
+  background-color: var(--bg-color);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  pointer-events: none;
+}
+
+.send-confirmation.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.send-confirmation.exiting {
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.confirm-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Three animated horizontal bars — like a brutalist loader */
+.confirm-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.confirm-lines span {
+  display: block;
+  height: 2px;
+  background-color: var(--text-color);
+  width: 0;
+  animation: drawLine 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.confirm-lines span:nth-child(1) { animation-delay: 0.0s; width: 60px; }
+.confirm-lines span:nth-child(2) { animation-delay: 0.1s; width: 40px; }
+.confirm-lines span:nth-child(3) { animation-delay: 0.2s; width: 50px; }
+
+@keyframes drawLine {
+  from { width: 0; opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.confirm-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeUpItem 0.5s ease forwards;
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.confirm-title {
+  font-family: var(--font-sans);
+  font-size: 4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1;
+  animation: fadeUpItem 0.5s ease forwards;
+  animation-delay: 0.35s;
+  opacity: 0;
+}
+
+/* Blinking terminal cursor */
+.confirm-cursor {
+  display: inline-block;
+  animation: blink 0.8s step-end infinite;
+  animation-delay: 0.9s;
+  opacity: 0;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.confirm-sub {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: #666;
+  animation: fadeUpItem 0.5s ease forwards;
+  animation-delay: 0.5s;
+  opacity: 0;
+}

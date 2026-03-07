@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/pages/personal", "destination": "/pages/personal.html" },
-    { "source": "/pages/contact", "destination": "/pages/contact.html" }
+    { "source": "/pages/contact",  "destination": "/pages/contact.html"  },
+    { "source": "/api/(.*)",       "destination": "/api/$1"               }
   ]
 }
