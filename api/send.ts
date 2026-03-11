@@ -52,7 +52,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     }
 
     await resend.emails.send({
-      from: 'Portfolio <onboarding@resend.dev>', // Change to your verified domain later
+      from: 'Portfolio <contact@rushsh.dev>', // Change to your verified domain later
       to: 'rushabh1404@gmail.com',
       subject,
       html,
