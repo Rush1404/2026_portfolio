@@ -1,4 +1,8 @@
 // /src/main.ts
+import { inject } from '@vercel/analytics';
+
+inject();
+
 document.addEventListener('DOMContentLoaded', () => {
   
   const loader: HTMLElement | null = document.getElementById('loader');
