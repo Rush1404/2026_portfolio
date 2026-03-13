@@ -1585,3 +1585,462 @@ body.loading {
   animation-delay: 0.5s;
   opacity: 0;
 }
+
+/* ============================================================
+   MOBILE — Full rewrite
+   Append to the bottom of style.css (or import separately)
+   ============================================================ */
+
+/* ── 0. BASE RESETS ─────────────────────────────────────────── */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+a, button, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* ── 1. NAV ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .editorial-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--bg-color);
+    border-bottom: 1.5px solid var(--border-color);
+    white-space: nowrap;
+    gap: 0.5rem;
+  }
+
+  .nav-brand {
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    letter-spacing: 0.3px;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .nav-links a {
+    margin-left: 0.9rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+}
+
+/* ── 2. HERO ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .landing-section {
+    min-height: auto;
+    padding: 0;
+    align-items: stretch;
+  }
+
+  /* Remove bordered box — go full bleed */
+  .editorial-container {
+    flex-direction: column;
+    border: none;
+    border-bottom: 2px solid var(--border-color);
+    padding: 0;
+    gap: 0;
+    max-width: 100%;
+    width: 100%;
+    background-color: var(--bg-color);
+  }
+
+  /* Photo goes FIRST as a wide banner */
+  .image-column {
+    order: -1;
+    width: 100%;
+    display: block;
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  .image-wrapper {
+    width: 100%;
+    height: 56vw;
+    border-radius: 0;
+    border: none;
+    overflow: hidden;
+  }
+
+  .image-wrapper::before { display: none; }
+
+  .portrait-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  /* Content block */
+  .content-column {
+    padding: 1.8rem 1.4rem 2rem;
+    text-align: left;
+    flex: none;
+    width: 100%;
+  }
+
+  .mono-label {
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.6rem;
+    color: #666;
+  }
+
+  h1 {
+    font-size: 15.5vw;
+    line-height: 0.95;
+    margin-bottom: 1.4rem;
+    letter-spacing: -1px;
+  }
+
+  .mono-description {
+    font-size: 0.82rem;
+    padding-left: 0;
+    border-left: none;
+    border-top: none;
+    padding-top: 0;
+    margin-bottom: 1.8rem;
+    max-width: 100%;
+    line-height: 1.5;
+    color: #555;
+  }
+
+  .cta-container { justify-content: flex-start; }
+  .editorial-btn { padding: 0.85rem 1.5rem; font-size: 0.82rem; }
+
+  .social-links {
+    margin-top: 1.6rem;
+    gap: 1.2rem;
+    justify-content: flex-start;
+  }
+
+  .social-links a { font-size: 1.3rem; padding: 4px; }
+}
+
+/* ── 3. PROJECTS ─────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .projects-section {
+    flex-direction: column;
+    border-top: none;
+  }
+
+  /* Sidebar: inverted color strip */
+  .about-sidebar {
+    position: static;
+    height: auto;
+    width: 100%;
+    flex: none;
+    border-right: none;
+    border-bottom: 2px solid var(--border-color);
+    padding: 1.6rem 1.4rem 1.8rem;
+    opacity: 1;
+    transform: none;
+    display: block;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+  }
+
+  .sidebar-label {
+    position: static;
+    display: block;
+    font-size: 0.72rem;
+    color: #888;
+    margin-bottom: 0.8rem;
+  }
+
+  .sidebar-info { flex: none; justify-content: flex-start; }
+
+  .sidebar-name {
+    font-size: 12vw;
+    line-height: 0.95;
+    letter-spacing: -1px;
+    color: var(--bg-color);
+  }
+
+  .sidebar-title { font-size: 0.9rem; color: #aaa; margin-bottom: 0.4rem; }
+  .sidebar-tagline { font-size: 0.78rem; color: #aaa; margin-bottom: 1.2rem; max-width: 100%; }
+  .sidebar-socials a { color: var(--bg-color) !important; font-size: 1.3rem; }
+
+  /* Projects area */
+  .projects-container { padding: 1.8rem 0 0; overflow: hidden; }
+
+  .projects-label {
+    padding-left: 1.4rem;
+    font-size: 0.72rem;
+    color: #888;
+    margin-bottom: 1rem;
+    display: block;
+    font-family: var(--font-mono);
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .project-card { margin-bottom: 3rem; }
+  .project-header { padding: 0.4rem 0; margin-bottom: 1rem; overflow: hidden; }
+
+  .marquee-title {
+    font-size: 11.5vw;
+    padding-left: 1.4rem;
+  }
+
+  .project-image-wrapper { margin: 0 1.4rem 1rem; aspect-ratio: 16 / 9; }
+
+  .project-tech-stack {
+    padding: 0 1.4rem;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: flex-start;
+  }
+
+  .tech-tag { font-size: 0.75rem; padding: 0.25rem 0.6rem; }
+}
+
+/* ── 4. RESUME ───────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .resume-section { padding: 2.4rem 1.4rem 3rem; }
+
+  .resume-header { gap: 1rem; margin-bottom: 2rem; }
+  .resume-main-title { font-size: 0.8rem; white-space: nowrap; }
+
+  .resume-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+  .resume-label-col { margin-bottom: 1rem; }
+  .resume-label {
+    font-size: 0.78rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-bottom: 1.5px solid var(--border-color);
+    padding-bottom: 0.6rem;
+  }
+
+  .job-item { border-left: 3px solid var(--text-color); padding-left: 1.2rem; margin-bottom: 2.4rem; }
+
+  .job-header { flex-direction: column; align-items: flex-start; gap: 0.4rem; margin-bottom: 0.5rem; }
+  .job-title { font-size: 1.1rem; font-weight: 800; }
+  .job-date { font-size: 0.7rem; padding: 0.25rem 0.6rem; }
+  .job-company { font-size: 0.82rem; margin-bottom: 1rem; }
+  .job-bullets li { font-size: 0.82rem; line-height: 1.65; margin-bottom: 0.7rem; }
+}
+
+/* ── 5. PERSONAL PAGE ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .personal-hero {
+    padding: 3rem 1.4rem;
+    min-height: auto;
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .personal-content { align-items: flex-start; }
+
+  .personal-title {
+    font-size: 16vw;
+    white-space: normal;
+    line-height: 0.95;
+    margin-bottom: 2.2rem;
+    text-align: left;
+  }
+
+  .text-center { text-align: left; margin-bottom: 2.2rem; padding: 0; }
+  .subtitle-large { font-size: 5.5vw; line-height: 1.5; }
+  .quality-text { font-size: 5.5vw; min-width: 0; }
+  .center-cta { justify-content: flex-start; }
+  .letter-btn { width: auto; min-width: 200px; }
+}
+
+/* ── 6. HOBBIES ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hobbies-section { padding: 2.4rem 1.4rem 3rem; }
+  .hobbies-header { margin-bottom: 2rem; }
+
+  .hobbies-grid { grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .hobby-card { min-height: 200px; border-width: 2px; }
+  .card-inner { padding: 1.2rem; }
+  .hobby-title { font-size: 1.2rem; line-height: 1; }
+  .card-detail { font-size: 0.7rem; }
+  .icon-corner { font-size: 1.1rem; top: 1.2rem; right: 1.2rem; }
+
+  .reading-card .card-inner { justify-content: flex-end; padding-bottom: 1.2rem; }
+  .book-gallery { transform: scale(0.6); transform-origin: center bottom; height: 80px; margin: 0; }
+
+  /* Basketball popup relies on mousemove — hide on touch */
+  .wemby-popup { display: none; }
+}
+
+/* ── 7. BENTO ────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .dashboard-section { padding: 2.4rem 1.4rem 3rem; }
+
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "routine" "music" "plans" "stats";
+    gap: 1.2rem;
+  }
+
+  .bento-card {
+    padding: 1.4rem;
+    box-shadow: 5px 5px 0px rgba(0,0,0,1);
+    border-width: 2px;
+  }
+
+  /* Disable hover-lift on touch devices */
+  .bento-card:hover { transform: none; box-shadow: 5px 5px 0px rgba(0,0,0,1); }
+
+  .card-header { margin-bottom: 1.2rem; }
+  .bento-title { font-size: 1rem; }
+
+  /* Stats: 2×2 */
+  .stats-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    gap: 0;
+  }
+
+  .stat-row {
+    padding: 1.4rem 1rem;
+    border-right: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--border-color);
+  }
+
+  .stat-row:nth-child(2n) { border-right: none; }
+  .stat-row:nth-last-child(-n+2) { border-bottom: none; }
+
+  .stat-value { font-size: 2.6rem; }
+  .stat-label { font-size: 0.72rem; text-align: center; }
+
+  .album-art-wrapper { width: 100px; height: 100px; }
+  .marquee-text { font-size: 1rem; }
+  .routine-list li { font-size: 0.82rem; }
+  .checklist li { font-size: 0.82rem; }
+}
+
+/* ── 8. CONTACT ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .contact-section { padding: 2rem 1.4rem 3rem; min-height: auto; }
+  .contact-section .resume-header { margin-bottom: 1.8rem; }
+  .contact-container { gap: 2rem; }
+  .editorial-form { gap: 1.4rem; }
+  .form-row { grid-template-columns: 1fr; gap: 1.4rem; }
+
+  /* iOS zoom prevention */
+  .editorial-form input,
+  .editorial-form textarea,
+  .letter-textarea {
+    font-size: 16px !important;
+    padding: 0.85rem 1rem;
+  }
+
+  .editorial-form textarea { height: 140px; }
+
+  .editorial-form input:focus,
+  .editorial-form textarea:focus {
+    box-shadow: 4px 4px 0px rgba(0,0,0,1);
+    transform: translate(-1px, -1px);
+  }
+
+  .submit-btn { padding: 1rem; font-size: 0.9rem; }
+
+  .direct-email-box {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: flex-start;
+    padding: 1rem 1.2rem;
+  }
+
+  .email-text { font-size: 0.85rem; }
+  .copy-icon { align-self: flex-end; }
+}
+
+/* ── 9. MODALS — bottom sheet style ─────────────────────────── */
+@media (max-width: 768px) {
+  .modal-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-container {
+    width: 100%;
+    max-width: 100% !important;
+    border: none;
+    border-top: 3px solid var(--border-color);
+    border-radius: 0;
+    padding: 1.8rem 1.4rem 2rem;
+    box-shadow: 0 -8px 30px rgba(0,0,0,0.1);
+    transform: translateY(40px);
+    max-height: 85vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .modal-overlay.active .modal-container { transform: translateY(0); }
+
+  .modal-title { font-size: 1rem; margin-bottom: 1.2rem; padding-right: 2.5rem; }
+  .close-modal { top: 1.2rem; right: 1.2rem; font-size: 1.3rem; }
+
+  .cv-modal-container {
+    height: 92vh !important;
+    max-height: 92vh !important;
+    padding-top: 1.4rem;
+  }
+
+  .pdf-wrapper { flex: 1; margin-bottom: 1.2rem; }
+
+  .modal-actions { gap: 10px; }
+
+  .modal-btn, .modal-actions .editorial-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .modal-images { height: 80px; margin-bottom: 0.8rem; }
+  .modal-img { width: 60px; height: 60px; }
+  .letter-textarea { height: 90px; font-size: 16px !important; }
+  .privacy-note { font-size: 0.72rem; }
+}
+
+/* ── 10. SEND CONFIRMATION ───────────────────────────────────── */
+@media (max-width: 480px) {
+  .confirm-title { font-size: 3rem; }
+  .confirm-label { font-size: 0.7rem; }
+  .confirm-sub { font-size: 0.78rem; }
+}
+
+/* ── 11. LOADER ──────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .loader-bar { animation-duration: 0.55s; }
+}
+
+/* ── 12. SAFE AREA (notch / home bar) ───────────────────────── */
+@supports (padding: max(0px)) {
+  @media (max-width: 768px) {
+    .editorial-nav {
+      padding-left: max(1.4rem, env(safe-area-inset-left));
+      padding-right: max(1.4rem, env(safe-area-inset-right));
+    }
+    body { padding-bottom: env(safe-area-inset-bottom); }
+  }
+}
+
+/* ── 13. OVERFLOW GUARD ──────────────────────────────────────── */
+body { overflow-x: hidden; }
+.projects-section, .project-header, .marquee-title { overflow-x: hidden; max-width: 100vw; }
